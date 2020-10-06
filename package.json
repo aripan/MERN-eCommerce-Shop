@@ -1,0 +1,18 @@
+{
+  "name": "pro-shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "author": "Asad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aripan/Pro-Shop/issues"
+  },
+  "homepage": "https://github.com/aripan/Pro-Shop#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
