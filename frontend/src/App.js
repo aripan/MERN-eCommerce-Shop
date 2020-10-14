@@ -4,19 +4,28 @@ import { Container } from "react-bootstrap";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeScreen from "./screens/HomeScreen";
-import ProductScreen from "./screens/ProductScreen";
+
+// CART, LOGIN, REGISTRATION, SHIPPING, PAYMENT
 import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
-import PlaceOrderScreen from "./screens/PlaceOrderScreen";
-import OrderScreen from "./screens/OrderScreen";
-import UserListScreen from "./screens/UserListScreen";
-import UserEditScreen from "./screens/UserEditScreen";
+
+// PRODUCT
+import ProductScreen from "./screens/ProductScreen";
 import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
+
+// ORDER
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import OrderScreen from "./screens/OrderScreen";
+import OrderListScreen from "./screens/OrderListScreen";
+
+// USER
+import UserListScreen from "./screens/UserListScreen";
+import UserEditScreen from "./screens/UserEditScreen";
 
 function App() {
   return (
@@ -25,22 +34,32 @@ function App() {
         <Header />
         <main className="py-3">
           <Container>
-            <Route path="/order/:id" component={OrderScreen} />
-            <Route path="/placeOrder" component={PlaceOrderScreen} />
-            <Route path="/payment" component={PaymentScreen} />
-            <Route path="/shipping" component={ShippingScreen} />
-            <Route path="/register" component={RegisterScreen} />
-            <Route path="/login" component={LoginScreen} />
-            <Route path="/profile" component={ProfileScreen} />
-            <Route path="/product/:id" component={ProductScreen} />
+            {/* CART, LOGIN, REGISTRATION, SHIPPING, PAYMENT */}
             <Route path="/cart/:id?" component={CartScreen} />
-            <Route path="/admin/userlist" component={UserListScreen} />
-            <Route path="/admin/user/:id/edit" component={UserEditScreen} />
+            <Route path="/login" component={LoginScreen} />
+            <Route path="/register" component={RegisterScreen} />
+            <Route path="/shipping" component={ShippingScreen} />
+            <Route path="/payment" component={PaymentScreen} />
+
+            {/* PRODUCT */}
+            <Route path="/product/:id" component={ProductScreen} />
             <Route path="/admin/productlist" component={ProductListScreen} />
             <Route
               path="/admin/product/:id/edit"
               component={ProductEditScreen}
             />
+
+            {/* ORDER */}
+            <Route path="/order/:id" component={OrderScreen} />
+            <Route path="/placeOrder" component={PlaceOrderScreen} />
+            <Route path="/profile" component={ProfileScreen} />
+            <Route path="/admin/orderlist" component={OrderListScreen} />
+
+            {/* USER */}
+            <Route path="/admin/userlist" component={UserListScreen} />
+            <Route path="/admin/user/:id/edit" component={UserEditScreen} />
+
+            {/* HOMESCREEN */}
             <Route exact path="/" component={HomeScreen} />
           </Container>
         </main>
