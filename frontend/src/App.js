@@ -59,8 +59,9 @@ function App() {
             <Route path="/admin/userlist" component={UserListScreen} />
             <Route path="/admin/user/:id/edit" component={UserEditScreen} />
 
-            {/* HOMESCREEN */}
-            <Route exact path="/" component={HomeScreen} />
+            {/* HOME SCREEN */}
+            <Route path="/search/:keyword" component={HomeScreen} />
+            <Route path="/" component={HomeScreen} exact />
           </Container>
         </main>
         <Footer />
