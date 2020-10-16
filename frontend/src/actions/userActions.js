@@ -26,6 +26,7 @@ import {
   USER_UPDATE_SUCCESS,
 } from "../constants/userConstants";
 import { ORDER_MY_PERSONAL_LIST_RESET } from "../constants/orderConstants";
+import { CART_RESET_ITEM } from "../constants/cartConstants";
 
 // LOGIN
 export const login = (email, password) => async (dispatch) => {
@@ -70,6 +71,7 @@ export const logout = () => (dispatch) => {
   dispatch({ type: USER_DETAILS_RESET });
   dispatch({ type: ORDER_MY_PERSONAL_LIST_RESET });
   dispatch({ type: USER_LIST_RESET });
+  dispatch({ type: CART_RESET_ITEM });
 };
 
 // REGISTER
