@@ -11,11 +11,11 @@ import {
   getOrderDetails,
   payOrder,
   deliverOrder,
-} from "../actions/orderActions";
+} from "../redux/actions/orderActions";
 import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
-} from "../constants/orderConstants";
+} from "../redux/constants/orderConstants";
 
 const OrderScreen = ({ match, history }) => {
   const orderId = match.params.id;
@@ -93,7 +93,7 @@ const OrderScreen = ({ match, history }) => {
     <Message variant="danger">{error}</Message>
   ) : (
     <React.Fragment>
-      <Meta title="Welcome To ProShop | Orders" />
+      <Meta title="Welcome To MERN-Shop | Orders" />
       <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>
@@ -152,7 +152,8 @@ const OrderScreen = ({ match, history }) => {
                           </Link>
                         </Col>
                         <Col sm={6} md={6}>
-                          {item.qty} x ${item.price}= ${item.qty * item.price}
+                          {item.qty} x &euro;{item.price}= &euro;
+                          {item.qty * item.price}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -172,25 +173,25 @@ const OrderScreen = ({ match, history }) => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${order.itemsPrice}</Col>
+                  <Col>&euro;{order.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>${order.shippingPrice}</Col>
+                  <Col>&euro;{order.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${order.taxPrice}</Col>
+                  <Col>&euro;{order.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>${order.totalPrice}</Col>
+                  <Col>&euro;{order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
 

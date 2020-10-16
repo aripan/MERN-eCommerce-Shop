@@ -6,7 +6,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import Meta from "../components/Meta";
-import { login } from "../actions/userActions";
+import { login } from "../redux/actions/userActions";
 
 const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState("");
@@ -31,7 +31,7 @@ const LoginScreen = ({ location, history }) => {
   };
   return (
     <>
-      <Meta title="Welcome To ProShop | Sign In" />
+      <Meta title="Welcome To MERN-Shop | Sign In" />
       <FormContainer>
         <h1>Sign In</h1>
         {error && <Message variant="danger">{error}</Message>}
@@ -66,6 +66,7 @@ const LoginScreen = ({ location, history }) => {
               New Customer ?{" "}
               <Link
                 to={redirect ? `/register?redirect=${redirect}` : "/register"}
+                className="krona__one"
               >
                 Register
               </Link>

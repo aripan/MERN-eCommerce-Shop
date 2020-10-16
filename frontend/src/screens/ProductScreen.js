@@ -17,8 +17,8 @@ import Meta from "../components/Meta";
 import {
   listProductDetails,
   createProductReview,
-} from "../actions/productActions";
-import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
+} from "../redux/actions/productActions";
+import { PRODUCT_CREATE_REVIEW_RESET } from "../redux/constants/productConstants";
 
 const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1);
@@ -91,7 +91,7 @@ const ProductScreen = ({ history, match }) => {
                     text={`${product.numReviews} reviews`}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+                <ListGroup.Item>Price: &euro;{product.price}</ListGroup.Item>
                 <ListGroup.Item>
                   Description: {product.description}
                 </ListGroup.Item>
@@ -104,7 +104,7 @@ const ProductScreen = ({ history, match }) => {
                     <Row>
                       <Col>Price:</Col>
                       <Col>
-                        <strong>${product.price}</strong>
+                        <strong>&euro;{product.price}</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -171,47 +171,53 @@ const ProductScreen = ({ history, match }) => {
                     <p>{review.comment}</p>
                   </ListGroup.Item>
                 ))}
-                {/* TO WRITE A REVIEW */}
-                <h2>Write a Customer Review</h2>
-                {errorProductReview && (
-                  <Message variant="danger">{errorProductReview}</Message>
-                )}
-                {userInfo ? (
-                  <Form onSubmit={submitHandler}>
-                    <Form.Group controlId="rating">
-                      <Form.Label>Rating</Form.Label>
-                      <Form.Control
-                        as="select"
-                        value={rating}
-                        onChange={(e) => setRating(e.target.value)}
-                      >
-                        <option value="">Select...</option>
-                        <option value="1">1 - Poor</option>
-                        <option value="2">2 - Fair</option>
-                        <option value="3">3 - Good</option>
-                        <option value="4">4 - Very Good</option>
-                        <option value="5">5 - Excellent</option>
-                      </Form.Control>
-                    </Form.Group>
-                    <Form.Group controlId="comment">
-                      <Form.Label>Comment</Form.Label>
-                      <Form.Control
-                        as="textarea"
-                        row="3"
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                      ></Form.Control>
-                    </Form.Group>
-                    <Button type="submit" variant="primary">
-                      submit
-                    </Button>
-                  </Form>
-                ) : (
-                  <Message>
-                    Please <Link to="/login">sign in</Link> to write a review
-                  </Message>
-                )}
               </ListGroup>
+            </Col>
+            <Col md={6}>
+              {/* TO WRITE A REVIEW */}
+              <h2>Write a Customer Review</h2>
+              {errorProductReview && (
+                <Message variant="danger">{errorProductReview}</Message>
+              )}
+              {userInfo ? (
+                <Form onSubmit={submitHandler}>
+                  <Form.Group controlId="rating">
+                    <Form.Label>Rating</Form.Label>
+                    <Form.Control
+                      as="select"
+                      value={rating}
+                      onChange={(e) => setRating(e.target.value)}
+                    >
+                      <option value="">Select...</option>
+                      <option value="1">1 - Poor</option>
+                      <option value="2">2 - Fair</option>
+                      <option value="3">3 - Good</option>
+                      <option value="4">4 - Very Good</option>
+                      <option value="5">5 - Excellent</option>
+                    </Form.Control>
+                  </Form.Group>
+                  <Form.Group controlId="comment">
+                    <Form.Label>Comment</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      row="3"
+                      value={comment}
+                      onChange={(e) => setComment(e.target.value)}
+                    ></Form.Control>
+                  </Form.Group>
+                  <Button type="submit" variant="primary">
+                    submit
+                  </Button>
+                </Form>
+              ) : (
+                <Message>
+                  Please{" "}
+                  <Link to="/login" className="krona__one">
+                    sign in
+                  </Link>{" "}
+                  to write a review
+                </Message>
+              )}
             </Col>
           </Row>
         </>

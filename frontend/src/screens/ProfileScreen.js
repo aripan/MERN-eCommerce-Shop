@@ -5,8 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Meta from "../components/Meta";
-import { getUserDetails, updateUserProfile } from "../actions/userActions";
-import { myPersonalListOrders } from "../actions/orderActions";
+import {
+  getUserDetails,
+  updateUserProfile,
+} from "../redux/actions/userActions";
+import { myPersonalListOrders } from "../redux/actions/orderActions";
 
 const RegisterScreen = ({ location, history }) => {
   const [name, setName] = useState("");
@@ -57,7 +60,7 @@ const RegisterScreen = ({ location, history }) => {
   };
   return (
     <>
-      <Meta title="Welcome To ProShop | Profile" />
+      <Meta title="Welcome To MERN-Shop | Profile" />
       <Row>
         <Col md={3}>
           <h2>User Profile</h2>
@@ -134,7 +137,7 @@ const RegisterScreen = ({ location, history }) => {
                   <tr key={order._id}>
                     <td>{order._id}</td>
                     <td>{order.createdAt.substring(0, 10)}</td>
-                    <td> ${order.totalPrice}</td>
+                    <td> &euro;{order.totalPrice}</td>
                     <td>
                       {order.isPaid ? (
                         order.paidAt.substring(0, 10)

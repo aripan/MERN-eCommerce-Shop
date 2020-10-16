@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Meta from "../components/Meta";
-import { listOrders } from "../actions/orderActions";
+import { listOrders } from "../redux/actions/orderActions";
 
 const OrderListScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const OrderListScreen = ({ history }) => {
 
   return (
     <React.Fragment>
-      <Meta title="Welcome To ProShop | Orders" />
+      <Meta title="Welcome To MERN-Shop | Orders" />
       <h1>Orders</h1>
       {loading ? (
         <Loader />
@@ -51,7 +51,7 @@ const OrderListScreen = ({ history }) => {
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
-                <td>${order.totalPrice}</td>
+                <td>&euro;{order.totalPrice}</td>
                 <td>
                   {order.isPaid ? (
                     order.paidAt.substring(0, 10)

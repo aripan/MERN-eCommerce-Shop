@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Meta from "../components/Meta";
-import { saveShippingAddress } from "../actions/cartActions";
+import { saveShippingAddress } from "../redux/actions/cartActions";
 
 const ShippingScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
@@ -24,7 +24,7 @@ const ShippingScreen = ({ history }) => {
   };
   return (
     <React.Fragment>
-      <Meta title="Welcome To ProShop | Shipping" />
+      <Meta title="Welcome To MERN-Shop | Shipping" />
       <CheckoutSteps step1 step2 />
       <FormContainer>
         <h1>Shipping</h1>

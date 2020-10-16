@@ -10,9 +10,10 @@ import {
   Button,
   Card,
 } from "react-bootstrap";
+import FlipMove from "react-flip-move";
 import Message from "../components/Message";
 import Meta from "../components/Meta";
-import { addToCart, removeFromCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
 const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id;
@@ -41,55 +42,63 @@ const CartScreen = ({ match, location, history }) => {
 
   return (
     <>
-      <Meta title="Welcome To ProShop | Cart" />
+      <Meta title="Welcome To MERN-Shop | Cart" />
+
       <Row>
         <Col md={8}>
           <h1>Shopping Cart</h1>
           {cartItems.length === 0 ? (
             <Message>
-              Your cart is empty <Link to="/">Go Back</Link>{" "}
+              Your cart is empty{" "}
+              <Link to="/" className="krona__one">
+                Go Back
+              </Link>{" "}
             </Message>
           ) : (
             <ListGroup variant="flush">
-              {cartItems.map((item) => (
-                <ListGroup.Item key={item.product}>
-                  <Row>
-                    <Col mod={2}>
-                      <Image src={item.image} alt={item.name} fluid rounded />
-                    </Col>
-                    <Col mod={3}>
-                      <Link to={`/products/${item.product}`}>{item.name}</Link>
-                    </Col>
-                    <Col mod={2}>${item.price}</Col>
-                    <Col mod={2}>
-                      <Form
-                        as="select"
-                        value={item.qty}
-                        onChange={(e) =>
-                          dispatch(
-                            addToCart(item.product, Number(e.target.value))
-                          )
-                        }
-                      >
-                        {[...Array(item.countInStock).keys()].map((x) => (
-                          <option key={x + 1} value={x + 1}>
-                            {x + 1}
-                          </option>
-                        ))}
-                      </Form>
-                    </Col>
-                    <Col md={2}>
-                      <Button
-                        type="button"
-                        variant="light"
-                        onClick={() => removeFromCartHandler(item.product)}
-                      >
-                        <i className="fas fa-trash"></i>
-                      </Button>
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
-              ))}
+              <FlipMove>
+                {cartItems.map((item) => (
+                  <ListGroup.Item key={item.product} className="py-2">
+                    <Row>
+                      <Col mod={2}>
+                        <Image src={item.image} alt={item.name} fluid rounded />
+                      </Col>
+                      <Col mod={3}>
+                        <Link to={`/products/${item.product}`}>
+                          {item.name}
+                        </Link>
+                      </Col>
+                      <Col mod={2}>&euro;{item.price}</Col>
+                      <Col mod={2}>
+                        <Form
+                          as="select"
+                          value={item.qty}
+                          onChange={(e) =>
+                            dispatch(
+                              addToCart(item.product, Number(e.target.value))
+                            )
+                          }
+                        >
+                          {[...Array(item.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          ))}
+                        </Form>
+                      </Col>
+                      <Col md={2}>
+                        <Button
+                          type="button"
+                          variant="light"
+                          onClick={() => removeFromCartHandler(item.product)}
+                        >
+                          <i className="fas fa-trash fa-2x"></i>
+                        </Button>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                ))}
+              </FlipMove>
             </ListGroup>
           )}
         </Col>
@@ -101,6 +110,7 @@ const CartScreen = ({ match, location, history }) => {
                   Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}
                   ) items
                 </h2>
+                &euro;
                 {cartItems
                   .reduce((acc, item) => acc + item.qty * item.price, 0)
                   .toFixed(2)}

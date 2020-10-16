@@ -6,7 +6,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import Meta from "../components/Meta";
-import { register } from "../actions/userActions";
+import { register } from "../redux/actions/userActions";
 
 const RegisterScreen = ({ location, history }) => {
   const [name, setName] = useState("");
@@ -38,8 +38,8 @@ const RegisterScreen = ({ location, history }) => {
   };
   return (
     <>
-      <Meta title="Welcome To ProShop | Registration" />
-      <FormContainer>
+      <Meta title="Welcome To MERN-Shop | Registration" />
+      <FormContainer className="source__codePro">
         <h1>Sign Up</h1>
         {message && <Message variant="danger">{message}</Message>}
         {error && <Message variant="danger">{error}</Message>}
@@ -88,11 +88,23 @@ const RegisterScreen = ({ location, history }) => {
           <Button type="submit" variant="primary">
             Register
           </Button>
-
+          <Row className="py-3">
+            <Col>
+              <p>
+                By registering you agree to the MERNSHOP Conditions of Use &
+                Sale. Please see our Privacy Notice, our Cookies Notice and our
+                Interest-Based Ads Notice.
+              </p>
+            </Col>
+          </Row>
+          <hr />
           <Row className="py-3">
             <Col>
               Have an Account ?{" "}
-              <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
+              <Link
+                to={redirect ? `/login?redirect=${redirect}` : "/login"}
+                className="krona__one"
+              >
                 Login
               </Link>
             </Col>

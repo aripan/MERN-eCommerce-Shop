@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Meta from "../components/Meta";
-import { createOrder } from "../actions/orderActions";
+import { createOrder } from "../redux/actions/orderActions";
 
 const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -62,7 +62,7 @@ const PlaceOrderScreen = ({ history }) => {
 
   return (
     <React.Fragment>
-      <Meta title="Welcome To ProShop | Orders" />
+      <Meta title="Welcome To MERN-Shop | Orders" />
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
         <Col md={8}>
@@ -99,7 +99,8 @@ const PlaceOrderScreen = ({ history }) => {
                           </Link>
                         </Col>
                         <Col sm={6} md={6}>
-                          {item.qty} x ${item.price}= ${item.qty * item.price}
+                          {item.qty} x &euro;{item.price}= &euro;
+                          {item.qty * item.price}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -119,25 +120,25 @@ const PlaceOrderScreen = ({ history }) => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${cart.itemsPrice}</Col>
+                  <Col>&euro;{cart.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>${cart.shippingPrice}</Col>
+                  <Col>&euro;{cart.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${cart.taxPrice}</Col>
+                  <Col>&euro;{cart.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>${cart.totalPrice}</Col>
+                  <Col>&euro;{cart.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
 

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Meta from "../components/Meta";
-import { savePaymentMethod } from "../actions/cartActions";
+import { savePaymentMethod } from "../redux/actions/cartActions";
 
 const PaymentScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
@@ -25,7 +25,7 @@ const PaymentScreen = ({ history }) => {
   };
   return (
     <React.Fragment>
-      <Meta title="Welcome To ProShop | Payment" />
+      <Meta title="Welcome To MERN-Shop | Payment" />
       <CheckoutSteps step1 step2 step3 />
       <FormContainer>
         <h1>Payment Method</h1>

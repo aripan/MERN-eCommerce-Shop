@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Carousel, Image } from "react-bootstrap";
 import Loader from "./Loader";
 import Message from "./Message";
-import { listTopProducts } from "../actions/productActions";
+import { listTopProducts } from "../redux/actions/productActions";
 
 const ProductCarousel = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const ProductCarousel = () => {
             <Image src={product.image} alt={product.name} fluid />
             <Carousel.Caption className="carousel-caption">
               <h4>
-                {product.name} (${product.price})
+                {product.name} (&euro;{product.price})
               </h4>
             </Carousel.Caption>
           </Link>

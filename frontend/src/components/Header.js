@@ -4,13 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import SearchBox from "./SearchBox";
-import { logout } from "../actions/userActions";
+import { logout } from "../redux/actions/userActions";
 
 const Header = () => {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  // Grabbing the state using useSelector
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -21,7 +25,7 @@ const Header = () => {
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>ProShop</Navbar.Brand>
+            <Navbar.Brand className="krona__one">MERN-Shop</Navbar.Brand>
           </LinkContainer>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -31,11 +35,6 @@ const Header = () => {
             {/* SEARCH BOX */}
 
             <Nav className="ml-auto">
-              <LinkContainer to="/cart">
-                <Nav.Link>
-                  <i className="fas fa-shopping-cart"></i> Cart
-                </Nav.Link>
-              </LinkContainer>
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to="/profile">
@@ -67,6 +66,13 @@ const Header = () => {
                   </LinkContainer>
                 </NavDropdown>
               )}
+
+              <LinkContainer to="/cart">
+                <Nav.Link>
+                  <i className="fas fa-shopping-cart"></i> Cart (
+                  {cartItems.reduce((acc, item) => acc + item.qty, 0)})
+                </Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -9,8 +9,8 @@ import {
   listProducts,
   deleteProduct,
   createProduct,
-} from "../actions/productActions";
-import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
+} from "../redux/actions/productActions";
+import { PRODUCT_CREATE_RESET } from "../redux/constants/productConstants";
 
 const ProductListScreen = ({ history, match }) => {
   const pageNumber = match.params.pageNumber || 1;
@@ -107,7 +107,7 @@ const ProductListScreen = ({ history, match }) => {
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
-                  <td>${product.price}</td>
+                  <td>&euro;{product.price}</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>

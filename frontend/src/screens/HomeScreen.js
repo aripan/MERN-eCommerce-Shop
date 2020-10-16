@@ -6,9 +6,11 @@ import Product from "../components/Product";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Paginate from "../components/Paginate";
-import ProductCarousel from "../components/ProductCarousel";
+//! import ProductCarousel from "../components/ProductCarousel";
+import CustomizedCarousel from "../components/CustomizedCarousel";
 import Meta from "../components/Meta";
-import { listProducts } from "../actions/productActions";
+// import Animated from "../components/Animated";
+import { listProducts } from "../redux/actions/productActions";
 
 const HomeScreen = ({ match }) => {
   const keyword = match.params.keyword;
@@ -28,7 +30,9 @@ const HomeScreen = ({ match }) => {
     <>
       <Meta />
       {!keyword ? (
-        <ProductCarousel />
+        //! <ProductCarousel />
+
+        <CustomizedCarousel />
       ) : (
         <Link to="/" className="btn btn-light">
           Go Back
@@ -42,6 +46,11 @@ const HomeScreen = ({ match }) => {
       ) : //! THIS IS TO SHOW THE NO MATCH WHEN SEARCHING PRODUCTS
       products.length !== 0 ? (
         <>
+          <Paginate
+            pages={pages}
+            page={page}
+            keyword={keyword ? keyword : ""}
+          />
           <Row>
             {products.map((product) => (
               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
@@ -49,6 +58,7 @@ const HomeScreen = ({ match }) => {
               </Col>
             ))}
           </Row>
+
           <Paginate
             pages={pages}
             page={page}
