@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## MERN-Shop eCommerce Web App
 
-## Available Scripts
+A full-stack web application is built for an eCommerce website using the (MERN) stack.
 
-In the project directory, you can run:
+## Functionality
 
-### `npm start`
+1. Clean UI/UX
+2. User Authentication
+3. Add to cart functionality
+4. Checkout page
+5. Payment gateway with Paypal
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tech Stack
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Front-end: React JS, Redux, React Hooks
+- Back-end: Node JS, Express JS
+- Database: MongoDB
 
-### `npm test`
+## Hosted Version
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The latest version is deployed and hosted on Heroku. Check it out by clicking [HERE](https://e-mern-shopapp.herokuapp.com/).
 
-### `npm run build`
+## Usage
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You can login using the following credentials:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Username: test@example.com
+- Password: password
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Or you can Register a new account using fake email/password .
 
-### `npm run eject`
+## Notes
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. The Web App uses SSL encryption through HTTPS protocol to transfer input data.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Passwords are hashed once received by the backend.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. Despite 1 and 2, I'd still recommend using a fake/weak password to avoid any potential future attacks.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. Fake emails can be used to register due to the fact that emails will not be verified.
 
-## Learn More
+## Last but not least
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Sometimes the server responds slow for login/register requests, so please be patient.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. However, do check your browser console for any potential bad requests or errors.
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+3. Raise an issue in case you find any.
