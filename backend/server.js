@@ -27,11 +27,6 @@ if (process.env.NODE_ENV === "development") {
 }
 app.use(express.json());
 
-// Home route
-app.get("/", (req, res) => {
-  res.send("Its working");
-});
-
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
@@ -45,6 +40,20 @@ app.get("/api/config/paypal", (req, res) =>
 // making uploads folder static
 const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  // FOR ROUTES WHICH ARE NOT DEFINED
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+  );
+} else {
+  // Home route
+  app.get("/", (req, res) => {
+    res.send("Its working");
+  });
+}
 
 //! CUSTOMIZED ERROR HANDLER
 app.use(notFound);
